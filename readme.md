@@ -2,11 +2,38 @@
 
 # Introduction
 
+This project was generated using the rstamp generator and the template 
+rstamp-express-4-nject-1, which builds out a new Express 4 web app
+using Angular, Nject, Handlebars and Mongo.
+
 ## Overview
+
+This app is mainly for example.  It has a basic number of features
+which aught to prove useful on any future MEAN project.
 
 ## Installation
 
-## Usage
+```
+%> git clone [this-repo]
+```
+
+In a seperate terminal run this command to start mongo.
+```
+%> npm run mongo
+```
+
+Start the Express app with this command.
+```
+%> npm run start
+```
+
+## TODO
+
+1. Add crude passport login build out.
+1. Add Nginx config to serve static files.
+1. Add Scheming models to save data to MongoDB and possibly to manipulate Angular
+on the client.
+
 
 ## License
 
