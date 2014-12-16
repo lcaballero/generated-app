@@ -7,8 +7,15 @@ module.exports = do ->
 
   tree.register('express'           , -> require("express"))
   tree.register('HomeController'    , require("./controllers/HomeController"))
+  tree.register('LoginController'   , require("./controllers/LoginController"))
+
   tree.register('routes'            , require('./middleware/routes'))
-  tree.register('server'            , require('./middleware/server'))
+  tree.register('app'               , require('./middleware/app'))
+  tree.register('session'           , require('./middleware/session'))
+  tree.register('views'             , require('./middleware/views'))
+  tree.register('setup'             , require('./middleware/setup'))
+
   tree.register('mongo'             , require('./repos/Mongo'))
+  tree.register('logger'            , require('./logger'))
 
   tree.constant('config'            , require('../config/default.json'))
