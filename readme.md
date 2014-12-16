@@ -27,6 +27,9 @@ Start the Express app with this command.
 %> npm run start
 ```
 
+Point your browser to http://localhost:3000/.
+
+
 ## TODO
 
 1. Add crude passport login build out.
