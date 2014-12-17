@@ -1,28 +1,36 @@
 Scheming = require 'scheming'
+_        = require 'lodash'
 
 
 module.exports = (mongo) ->
 
-  reqString = -> {
-    type      : String
-    required  : true
-  }
+  requiredString = { type : String, required  : true }
 
-  collection = mongo.collection("User")
+  users = mongo.collection("User")
 
   User = Scheming.create('User', {
-    username: reqString()
-    password: reqString()
+    username: requiredString
+    password: requiredString
+    id :
+      type      : String
+      default   : -> _.uuid()
   })
+
+  User::save = (cb) ->
+    User.insertOne(this, cb)
+
+  User::validPassword = (pw) ->
+    console.log("this.password #{this.password}, pw #{pw}")
+    this.password is pw
 
   User.insertOne = (user, cb) ->
     if !cb?
       throw new Error("Callback is required")
     else
-      collection.insertOne(user, cb)
+      users.insertOne(new User(user), cb)
 
-  User.findByUsername = (user, cb) ->
-    collection.find({ username: user.username })
+  User.findByUsername = (username, cb) ->
+    users.find({ username: username })
       .toArray((err, docs) ->
         if err?
           cb(err, null)
@@ -31,9 +39,23 @@ module.exports = (mongo) ->
         else if docs.length > 1
           cb(new Error("Found more than one user."))
         else
-          cb(null, docs)
+          console.log(docs.length, 'docs', JSON.stringify(docs))
+          console.log(JSON.stringify(_.first(docs)))
+          cb(null, new User(_.first(docs)))
       )
 
+  User.findById = (id, cb) ->
+    users.findOne({id : id}, {}, (err, res) ->
+      if err?
+        cb(err, null)
+      else if !res?
+        cb(new Error("Didn't find User with ID: #{id}"), null)
+      else
+        cb(null, new User(res))
+    )
+
+  User.find = (q, cb) ->
+    users.find(q).toArray(cb)
 
   User
 

@@ -8,23 +8,21 @@ module.exports = (config, express, app, session, HomeController, LoginController
   render = (page, data) -> (req, res) ->
     res.render(page, data)
 
-  auth = passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login'
-  })
-
   routes.use((req, res, next) ->
     res.locals.config = config
     next()
   )
 
-  routes.get  "/"           , HomeController.index
-  routes.get  "/hello"      , HomeController.hello
-  routes.get  "/data"       , HomeController.data
-  routes.get  "/user"       , HomeController.user
+  auth = LoginController.ensureAuthenticated
+
+  routes.get  "/"           , auth, HomeController.index
+  routes.get  "/hello"      , auth, HomeController.hello
+  routes.get  "/data"       , auth, HomeController.data
+  routes.get  "/user"       , auth, HomeController.user
+  routes.get  "/see"        , auth, HomeController.see
+
   routes.get  "/add"        , HomeController.add
-  routes.get  "/see"        , HomeController.see
-  routes.get  "/login"      , render 'pages/loginForm', {}
-  routes.post "/login"      , auth
+  routes.get  "/login"      , render('pages/login-form', {})
+  routes.post "/login"      , LoginController.authenticate
 
   routes

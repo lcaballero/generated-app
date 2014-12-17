@@ -1,13 +1,19 @@
 nject = require('nject')
 Tree  = nject.Tree
 
+
 module.exports = do ->
+
+  require './public/js/LodashMixins'
 
   tree = new Tree()
 
   tree.register('express'           , -> require("express"))
+
   tree.register('HomeController'    , require("./controllers/HomeController"))
   tree.register('LoginController'   , require("./controllers/LoginController"))
+
+  tree.register('User'              , require("./models/User"))
 
   tree.register('routes'            , require('./middleware/routes'))
   tree.register('app'               , require('./middleware/app'))

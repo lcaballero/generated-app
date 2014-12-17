@@ -39,20 +39,31 @@ describe 'MongoRepoTests =>', ->
 
   describe 'find user =>', ->
 
-    username = _.uuid()
+    username  = _.uuid()
+    id        = _.uuid()
 
     beforeEach (done) ->
-      User.insertOne({ username: username }, (err, res) ->
-        done()
-      )
+      new User({ username: username, id: id })
+        .save((err, res) ->
+          if err?
+            console.log(err)
+          else
+            done()
+        )
 
     it "should find users(1) already inserted", (done) ->
-      User.findByUsername(new User({
-        username: username
-      }), (err, res) ->
+      User.findByUsername(username, (err, res) ->
         if err?
           console.log(err)
         else
           expect(res).to.have.length(1)
+          done()
+      )
+
+    it "should find the user by id", (done) ->
+      User.findById(id, (err, res) ->
+        if err?
+          console.log(err)
+        else
           done()
       )

@@ -1,6 +1,6 @@
-module.exports = (mongo) ->
+_ = require 'lodash'
 
-  coll = mongo.collection("Users")
+module.exports = (User) ->
 
   index: (req, res, next) ->
     res.render "index", { action: 'index' }
@@ -13,7 +13,7 @@ module.exports = (mongo) ->
 
   user: (req, res, next) ->
     name = req.param('username')
-    coll.find({username: name}).toArray((err, docs) ->
+    User.find({username: name}, (err, docs) ->
       if err?
         console.log(err)
       else
@@ -24,15 +24,18 @@ module.exports = (mongo) ->
     )
 
   add: (req, res, next) ->
-    name = req.param('username')
-    coll.find({username:name}).toArray((err, docs) ->
+    name    = req.param('username')
+    pw      = req.param('password')
+    newUser = new User { username:name, password: pw, id: _.uuid() }
+
+    User.find({username: name}, (err, docs) ->
       if err?
         console.log(err)
       else
         if docs.length > 0
           res.send("#{name} is already in the system")
         else
-          coll.insert({username: name}, (e2, r2) ->
+          newUser.save((e2, r2) ->
             if e2?
               console.log(e2)
             else
