@@ -18,7 +18,7 @@ module.exports = (logger, app, config, routes) ->
   })
   app.use bodyParser.json()
   app.use bodyParser.urlencoded({ extended: false })
-  app.use cookieParser 'do not ask, do not tell'
+  app.use cookieParser('do not ask, do not tell')
   app.use passport.initialize()
   app.use passport.session()
   app.use routes
