@@ -2,8 +2,10 @@ passport = require('passport')
 
 
 module.exports = (
-  config, express, app, session,
+  config, express, app,
   HomeController, LoginController) ->
+
+  console.log("routes.coffee")
 
   routes = express.Router()
 
@@ -29,4 +31,5 @@ module.exports = (
   routes.post "/login"      , LoginController.authenticate
   routes.get  "/socket"     , HomeController.socket
 
+  app.use routes
   routes

@@ -1,19 +1,18 @@
-<html>
-<head>
-  <title>{{title}}</title>
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  {{> css}}
-  {{> scripts}}
-  <script type="text/javascript" src="/js/socket.io-1.2.1.js"></script>
-  <script type="text/javascript" src="/js/SocketExample.js"></script>
-</head>
-<body>
+doctype html
+html
+  head
+    title Timez In
+    link(rel='shortcut icon' href='/favicon.ico' type='image/x-icon')
+    link(rel='icon' href='/favicon.ico' type='image/x-icon')
+    include ../partials/css.jade
+    include ../partials/scripts.jade
+    script(type="text/javascript" src="/js/socket.io-1.2.1.js")
+    script(type="text/javascript" src="/js/SocketExample.js")
 
-<dl>
-  <dt>Layout</dt>
-  <dd>socket.hbs</dd>
-</dl>
-{{{body}}}
-</body>
-</html>
+  body
+    dl
+      dt layout:
+      dd socket.jade
+    block main
+
+

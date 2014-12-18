@@ -2,7 +2,7 @@ path = require 'path'
 
 
 module.exports = (app, express, logger) ->
-
+  console.log('views.coffee')
   paths =
     views     : path.join(__dirname, '../views')
     public    : path.join(__dirname, '../public')

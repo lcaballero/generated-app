@@ -3,9 +3,9 @@ module.exports = do ->
     if err?
       console.log('Failed to resolve DI tree.', err)
     else
-      { app, config } = resolved
-      { port } = config
-      app.listen(port, ->
-        console.log('Listening on port %d', port)
+      { logger, socket, config } = resolved
+      logger.info("Application started: ", new Date())
+      socket.listen(config.port, ->
+        logger.info("Express listening on port: #{config.port}")
       )
   )

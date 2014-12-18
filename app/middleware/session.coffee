@@ -4,6 +4,8 @@ LocalStrategy = require('passport-local').Strategy
 
 module.exports = (User) ->
 
+  console.log("session.coffee")
+
   passport.use(new LocalStrategy(
     (username, password, done) ->
       User.findByUsername(username, (err, user) ->

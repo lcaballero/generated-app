@@ -1,15 +1,22 @@
-http          = require 'http'
 socket        = require 'socket.io'
+http          = require 'http'
+
 
 module.exports = (app, logger) ->
-  io = socket(http.createServer(app))
 
-  io.on('connection', ->
+  console.log("socket.coffee")
+
+  server = http.createServer(app)
+
+  io = socket.listen(server)
+
+  io.sockets.on('connection', (socket) ->
     logger.debug("Connected to socket.io")
 
-    setInterval(->
-      io.on('request', (data) ->
-        console.log(JSON.stringify(data))
-      )
-    , 300)
+    socket.on('request', (data) ->
+      console.log("recieved data", data)
+      socket.emit('response', { id: data.id, n : data.id * 2 })
+    )
   )
+
+  server

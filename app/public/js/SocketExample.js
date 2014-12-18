@@ -5,10 +5,16 @@
     console.log(data);
   });
 
+  var id = 0;
+
   setInterval(function() {
     socket.emit('request', {
       id: ++id
     });
   }, 300);
+
+  socket.on('response', function(data) {
+    console.log('response', data)
+  })
 
 })();
