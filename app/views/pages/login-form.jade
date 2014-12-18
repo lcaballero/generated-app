@@ -1,0 +1,17 @@
+extends ../layouts/default.jade
+
+block main
+  form(name="loginForm" method="post" action="/login")
+    h3 Login
+    div
+      label Username
+      br
+      input(type="text" name="username")
+
+    div
+      label Passowrd
+      br
+      input(type="text" name="password")
+
+    div
+      button(type="submit" value="submit") Submit

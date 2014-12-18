@@ -3,7 +3,7 @@ _ = require 'lodash'
 module.exports = (User) ->
 
   index: (req, res, next) ->
-    res.render "index", { action: 'index' }
+    res.render "pages/index", { action: 'index' }
 
   hello: (req, res, next) ->
     res.send "Hello, World!"

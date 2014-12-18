@@ -23,6 +23,7 @@ module.exports = (
   routes.get  "/user"       , auth, HomeController.user
   routes.get  "/see"        , auth, HomeController.see
 
+  routes.get  "/index"      , auth, HomeController.index
   routes.get  "/add"        , HomeController.add
   routes.get  "/login"      , render('pages/login-form', {})
   routes.post "/login"      , LoginController.authenticate

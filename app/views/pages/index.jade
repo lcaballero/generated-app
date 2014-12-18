@@ -1,0 +1,12 @@
+extends ../layouts/default.jade
+
+block main
+  dl
+    dt partial:
+    dd index.jade
+
+  div(ng-app="Main")
+    div(ng-controller="Writing")
+      h1 Title {{ data.name }}
+      h2 Author {{ data.name }}
+

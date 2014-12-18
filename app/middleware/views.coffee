@@ -1,5 +1,4 @@
 path = require 'path'
-hbs  = require 'express-handlebars'
 
 
 module.exports = (app, express, logger) ->
@@ -18,17 +17,7 @@ module.exports = (app, express, logger) ->
   app.set('views' , paths.views)
   app.set('public', paths.public)
 
-  app.engine('.hbs', hbs({
-    extname         : '.hbs'
-#    defaultLayout   : 'default'
-    layoutsDir      : paths.layouts
-    partialsDir     : paths.partials
-    helpers         : {
-      json : JSON.stringify
-    }
-  }))
-
-  app.set 'view engine', '.hbs'
+  app.set 'view engine', 'jade'
 
   # This can/should be handled by something like Nginx
   app.use express.static(paths.public)
