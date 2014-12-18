@@ -5,6 +5,7 @@ passport      = require 'passport'
 bodyParser    = require 'body-parser'
 path          = require 'path'
 
+
 module.exports = (logger, app, config, routes) ->
 
   icon = path.join(__dirname, '../public/favicon.ico')
@@ -22,3 +23,4 @@ module.exports = (logger, app, config, routes) ->
   app.use passport.initialize()
   app.use passport.session()
   app.use routes
+

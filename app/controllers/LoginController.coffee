@@ -2,14 +2,14 @@ passport = require 'passport'
 
 
 
-module.exports = (User) ->
+module.exports = ->
 
   authenticate: (req, res, next) ->
     passport.authenticate('local', (err, user, info) ->
       if err?
         next(err)
       else if not user?
-        return res.redirect('/login')
+        res.redirect('/login')
       else
         req.logIn(user, (err) ->
           if err?

@@ -20,7 +20,7 @@ module.exports = (app, express, logger) ->
 
   app.engine('.hbs', hbs({
     extname         : '.hbs'
-    defaultLayout   : 'default'
+#    defaultLayout   : 'default'
     layoutsDir      : paths.layouts
     partialsDir     : paths.partials
     helpers         : {

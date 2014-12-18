@@ -56,3 +56,6 @@ module.exports = (User) ->
 
     r = s.join("<br/>") + JSON.stringify(req.config, null, '  ')
     res.send(r)
+
+  socket : (req, res, next) ->
+    res.render "pages/socket-example", {}

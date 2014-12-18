@@ -15,6 +15,7 @@ module.exports = do ->
 
   tree.register('User'              , require("./models/User"))
 
+  tree.register('socket'            , require('./middleware/socket'))
   tree.register('routes'            , require('./middleware/routes'))
   tree.register('app'               , require('./middleware/app'))
   tree.register('session'           , require('./middleware/session'))

@@ -4,24 +4,23 @@ _        = require 'lodash'
 
 module.exports = (mongo) ->
 
-  requiredString = { type : String, required  : true }
-
   users = mongo.collection("User")
 
+  requiredString = { type : String, required  : true }
+
   User = Scheming.create('User', {
-    username: requiredString
-    password: requiredString
+    username  : requiredString
+    password  : requiredString
+    email     : requiredString
     id :
-      type      : String
-      default   : -> _.uuid()
+      type    : String
+      default : -> _.uuid()
   })
 
-  User::save = (cb) ->
-    User.insertOne(this, cb)
+  User::save = (cb) -> User.insertOne(this, cb)
+  User::validPassword = (pw) -> this.password is pw
 
-  User::validPassword = (pw) ->
-    console.log("this.password #{this.password}, pw #{pw}")
-    this.password is pw
+  User.find = (q, cb) -> users.find(q).toArray(cb)
 
   User.insertOne = (user, cb) ->
     if !cb?
@@ -53,9 +52,6 @@ module.exports = (mongo) ->
       else
         cb(null, new User(res))
     )
-
-  User.find = (q, cb) ->
-    users.find(q).toArray(cb)
 
   User
 

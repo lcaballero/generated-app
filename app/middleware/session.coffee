@@ -11,7 +11,7 @@ module.exports = (User) ->
           done(err)
         else if !user?
           done(null, false, { message: "Incorrect user credentials."})
-        else if !user.validPassword(password)
+        else if not user.validPassword(password)
           done(null, false, { message: "Incorrect user credentials."})
         else
           done(null, user)

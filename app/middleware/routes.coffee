@@ -1,7 +1,9 @@
 passport = require('passport')
 
 
-module.exports = (config, express, app, session, HomeController, LoginController) ->
+module.exports = (
+  config, express, app, session,
+  HomeController, LoginController) ->
 
   routes = express.Router()
 
@@ -24,5 +26,6 @@ module.exports = (config, express, app, session, HomeController, LoginController
   routes.get  "/add"        , HomeController.add
   routes.get  "/login"      , render('pages/login-form', {})
   routes.post "/login"      , LoginController.authenticate
+  routes.get  "/socket"     , HomeController.socket
 
   routes
