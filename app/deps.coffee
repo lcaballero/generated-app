@@ -4,7 +4,7 @@ Tree  = nject.Tree
 
 module.exports = do ->
 
-  require './public/js/LodashMixins'
+  require './public/src/js/LodashMixins'
 
   tree = new Tree()
 

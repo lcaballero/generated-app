@@ -5,4 +5,4 @@ global.expect = chai.expect
 console.json = (args...) ->
   console.log.apply(console, _.map(args, (a) -> JSON.stringify(a, null, '  ')))
 
-require '../../app/public/js/LodashMixins'
+require '.././LodashMixins'

@@ -1,0 +1,17 @@
+.hasLayout,
+.contain {
+  *zoom: 1;
+}
+.contain:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.none {
+  display: none;
+}
+.hide {
+  visibility: hidden;
+}
