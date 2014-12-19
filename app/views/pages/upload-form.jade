@@ -1,0 +1,11 @@
+extends ../layouts/default.jade
+
+block main
+  form(action='/upload' enctype='multipart/form-data' method='post' class='form-horizontal')
+    fieldset
+      div(class='form-group')
+        input(type='text' name='title')
+      div(class='form-group')
+        input(type='file' name='upload')
+      div(class='form-group')
+        input(type='submit' value='Upload')

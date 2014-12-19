@@ -1,4 +1,7 @@
-_ = require 'lodash'
+_           = require 'lodash'
+formidable  = require 'formidable'
+util        = require 'util'
+os          = require 'os'
 
 module.exports = (User) ->
 
@@ -59,3 +62,15 @@ module.exports = (User) ->
 
   socket : (req, res, next) ->
     res.render "pages/socket-example", {}
+
+  upload : (req, res, next) ->
+    form = new formidable.IncomingForm()
+    form.parse(req, (err, fields, files) ->
+      res.writeHead(200, { 'content-type' : 'text/plain' })
+      res.write('received file upload:\n\n')
+      res.write('file to be placed here:' + os.tmpDir())
+      res.write('\n\n')
+      res.end(util.inspect({ fields: fields, files:files }))
+    )
+
+

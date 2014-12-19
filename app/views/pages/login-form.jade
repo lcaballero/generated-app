@@ -1,17 +1,23 @@
 extends ../layouts/default.jade
 
 block main
-  form(name="loginForm" method="post" action="/login")
-    h3 Login
-    div
-      label Username
-      br
-      input(type="text" name="username")
+  div(class="container")
+    div(class="row")
+      div(class='col-lg-6')
+        form(name="loginForm" method="post" action="/login" class='form-horizontal')
+          fieldset
+            h3 Login
 
-    div
-      label Passowrd
-      br
-      input(type="text" name="password")
+            div(class="form-group")
+              label(class='col-lg-2 control-label') Username
+              div(class="col-lg-10")
+                input(type="text" name="username" class="form-control")
 
-    div
-      button(type="submit" value="submit") Submit
+            div(class="form-group")
+              label(class='col-lg-2 control-label') Passowrd
+              div(class="col-lg-10")
+                input(type="text" name="password" class="form-control")
+
+            div(class="form-group")
+              div(class='col-lg-10 col-lg-offset-2')
+                button(type="submit" value="submit") Submit

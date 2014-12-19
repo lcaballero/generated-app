@@ -24,12 +24,16 @@ module.exports = (
   routes.get  "/data"       , auth, HomeController.data
   routes.get  "/user"       , auth, HomeController.user
   routes.get  "/see"        , auth, HomeController.see
-
   routes.get  "/index"      , auth, HomeController.index
+
   routes.get  "/add"        , HomeController.add
+  routes.get  "/socket"     , HomeController.socket
+
   routes.get  "/login"      , render('pages/login-form', {})
   routes.post "/login"      , LoginController.authenticate
-  routes.get  "/socket"     , HomeController.socket
+
+  routes.get  "/upload"     , render('pages/upload-form')
+  routes.post "/upload"     , HomeController.upload
 
   app.use routes
   routes
