@@ -1,0 +1,23 @@
+extends ../layouts/default.jade
+
+block scripts
+  +js('Checkboxes.js')
+
+block styles
+  +style('Checkbox.css')
+
+
+block main
+  div(ng-app="Main" ng-controller="MainCtrl")
+    h1 Components Page
+
+    div
+      h2 Checkbox
+
+      checkbox
+        Check Box 1
+
+    div
+      h2 Buttons
+
+      button(class='btn btn-primary' type='submit') Submit

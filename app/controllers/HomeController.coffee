@@ -73,4 +73,5 @@ module.exports = (User) ->
       res.end(util.inspect({ fields: fields, files:files }))
     )
 
-
+  components : (req, res, next) ->
+    res.render "pages/component-page", {}
