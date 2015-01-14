@@ -75,3 +75,9 @@ module.exports = (User) ->
 
   components : (req, res, next) ->
     res.render "pages/component-page", {}
+
+  nodes : (req, res, next) ->
+    res.render "pages/nodes", {}
+
+
+

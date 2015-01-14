@@ -1,0 +1,18 @@
+extends ../layouts/default.jade
+
+block scripts
+  +js('NodesController.js')
+  +js('draggable.js')
+
+block styles
+  +style('nodes.css')
+
+block main
+  div(ng-app="Nodes" ng-controller="NodesController")
+    div.nodes
+      div.node(ng-repeat="node in nodes" style="left: {{node.x}}px; top: {{node.y}}px;" draggable)
+        div.grab-bar(ng-show="node.hasTitle")
+          b {{ node.name }}
+        div.content
+          div {{ node.content }}
+

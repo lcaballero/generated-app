@@ -1,0 +1,20 @@
+.nodes {
+  position: relative;
+}
+.node {
+  position: absolute;
+  border: 1px solid #333;
+  min-width: 100px;
+  min-height: 100px;
+}
+.node .grab-bar {
+  padding: 8px 10px;
+  border-bottom: 1px solid #333;
+}
+.node .grab-bar b {
+  display: inline-block;
+  font-weight: bold;
+}
+.node .content {
+  padding: 8px 10px;
+}

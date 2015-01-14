@@ -35,7 +35,8 @@ module.exports = (
   routes.get  "/upload"     , render('pages/upload-form')
   routes.post "/upload"     , HomeController.upload
 
-  routes.get  "/components"  , HomeController.components
+  routes.get  "/components"   , HomeController.components
+  routes.get  "/nodes"        , HomeController.nodes
 
   app.use routes
   routes
