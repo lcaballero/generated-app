@@ -4,8 +4,8 @@
   "description": "Base express ap",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/coffee index.js",
-    "mongo": "./node_modules/.bin/coffee start-mongo.coffee",
+    "start": "coffee index.coffee",
+    "mongo": "coffee start-mongo.coffee",
     "test": "mocha --require ./tests/lib/globals.coffee --reporter list --compilers coffee:coffee-script/register tests/app"
   },
   "author": "",

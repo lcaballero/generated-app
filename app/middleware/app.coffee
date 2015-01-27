@@ -8,8 +8,6 @@ path          = require 'path'
 
 module.exports = (config, logger, express) ->
 
-  console.log("app.coffee")
-
   logger.debug("App created from #{__filename}")
 
   app = express()

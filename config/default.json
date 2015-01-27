@@ -3,7 +3,7 @@
   "mongo": {
     "port": 2727,
     "db": "timezin",
-    "host": "localhost",
+    "host": "127.0.0.1",
     "dbpath": "/data/db"
   }
 }

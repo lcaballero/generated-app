@@ -21,3 +21,6 @@ module.exports = (app, express, logger) ->
 
   # This can/should be handled by something like Nginx
   app.use express.static(paths.public)
+
+  console.log('serving public files from', paths.public)
+  app

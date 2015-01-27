@@ -4,8 +4,6 @@ http          = require 'http'
 
 module.exports = (app, logger) ->
 
-  console.log("socket.coffee")
-
   server = http.createServer(app)
 
   io = socket.listen(server)

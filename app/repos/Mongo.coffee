@@ -6,8 +6,11 @@ module.exports = (config, _done) ->
 
   tree = @
   mongo = config.mongo
-  url   = "mongodb://localhost:#{mongo.port}/#{mongo.db}"
 
+  # Using ip resolves faster than DNS lookup which could cause Nject timeouts.
+  url = "mongodb://#{mongo.host || 'localhost'}:#{mongo.port}/#{mongo.db}"
+
+  console.log("connecting to #{url}")
 
   client.connect(url, (err, db) ->
     if err?

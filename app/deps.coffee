@@ -4,9 +4,15 @@ Tree  = nject.Tree
 
 module.exports = do ->
 
+  console.log('Setting up dependency tree.')
+
   require './public/src/js/LodashMixins'
 
   tree = new Tree()
+
+  tree.on('info', (data) -> console.log('info:', data))
+  tree.on('debug', (data) -> console.log('debug:', data))
+  tree.on('warn', (data) -> console.log('warn:', data))
 
   tree.register('HomeController'    , require("./controllers/HomeController"))
   tree.register('LoginController'   , require("./controllers/LoginController"))
@@ -25,3 +31,5 @@ module.exports = do ->
   tree.constant('express'           , require('express'))
   tree.constant('config'            , require('../config/default.json'))
   tree.constant('SocketIO'          , require('socket.io'))
+
+  tree
